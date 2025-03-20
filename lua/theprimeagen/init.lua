@@ -49,11 +49,12 @@ autocmd({"BufWritePre"}, {
 autocmd('BufEnter', {
     group = ThePrimeagenGroup,
     callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("rose-pine-moon")
-        end
+        --if vim.bo.filetype == "zig" then
+        --    vim.cmd.colorscheme("tokyonight-night")
+        --else
+        --    vim.cmd.colorscheme("rose-pine-moon")
+        --end
+        vim.cmd.colorscheme("nightfly")
     end
 })
 
