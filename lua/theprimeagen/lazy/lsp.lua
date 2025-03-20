@@ -77,10 +77,12 @@ return {
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+        local luasnip = require('luasnip')
+
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    luasnip.lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
             mapping = cmp.mapping.preset.insert({
@@ -88,6 +90,20 @@ return {
                 ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-l>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
+                --["<Tab>"] = cmp.mapping(function(fallback)
+                --    if luasnip.expand_or_jumpable() then
+                --        luasnip.expand_or_jump()
+                --    else
+                --        fallback()
+                --    end
+                --end, { "i", "s" }),
+                --["<S-Tab>"] = cmp.mapping(function(fallback)
+                --    if luasnip.jumpable(-1) then
+                --        luasnip.jump(-1)
+                --    else
+                --        fallback()
+                --    end
+                --end, { "i", "s" }),
             }),
             sources = cmp.config.sources({
                 { name = "copilot", group_index = 2 },
