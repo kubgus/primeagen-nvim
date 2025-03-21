@@ -13,7 +13,7 @@ return {
                     keymap = {
                         accept = false,
                         accept_word = false,
-                        accept_line = "<S-Tab>",
+                        accept_line = "<Tab>",
                         next = false,
                         prev = false,
                         dismiss = "<C-c>",
