@@ -53,39 +53,39 @@ return {
             on_attach = function(bufnr)
                 local gitsigns = require('gitsigns')
 
-                vim.keymap.set('n', '<leader>ga', gitsigns.stage_hunk)
-                vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk)
+                vim.keymap.set('n', '<leader>ga', gitsigns.stage_hunk, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { buffer = bufnr })
 
                 vim.keymap.set('v', '<leader>ga', function()
                     gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-                end)
+                end, { buffer = bufnr })
 
                 vim.keymap.set('v', '<leader>gr', function()
                     gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-                end)
+                end, { buffer = bufnr })
 
-                vim.keymap.set('n', '<leader>gA', gitsigns.stage_buffer)
-                vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer)
-                vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk)
-                vim.keymap.set('n', '<leader>gi', gitsigns.preview_hunk_inline)
+                vim.keymap.set('n', '<leader>gA', gitsigns.stage_buffer, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gi', gitsigns.preview_hunk_inline, { buffer = bufnr })
 
                 vim.keymap.set('n', '<leader>gb', function()
                     gitsigns.blame_line({ full = true })
-                end)
+                end, { buffer = bufnr })
 
-                vim.keymap.set('n', '<leader>gd', gitsigns.diffthis)
+                vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { buffer = bufnr })
 
                 vim.keymap.set('n', '<leader>gD', function()
                     gitsigns.diffthis('~')
-                end)
+                end, { buffer = bufnr })
 
-                vim.keymap.set('n', '<leader>gQ', function() gitsigns.setqflist('all') end)
-                vim.keymap.set('n', '<leader>gq', gitsigns.setqflist)
+                vim.keymap.set('n', '<leader>gQ', function() gitsigns.setqflist('all') end, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gq', gitsigns.setqflist, { buffer = bufnr })
 
                 -- Toggles
-                vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame)
-                vim.keymap.set('n', '<leader>gtd', gitsigns.toggle_deleted)
-                vim.keymap.set('n', '<leader>gtw', gitsigns.toggle_word_diff)
+                vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gtd', gitsigns.toggle_deleted, { buffer = bufnr })
+                vim.keymap.set('n', '<leader>gtw', gitsigns.toggle_word_diff, { buffer = bufnr })
             end
         }
     end
