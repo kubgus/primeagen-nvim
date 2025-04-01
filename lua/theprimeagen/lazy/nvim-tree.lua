@@ -1,5 +1,8 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    dependencies = {
+        "kyazdani42/nvim-web-devicons",
+    },
     config = function ()
         require("nvim-tree").setup({
             hijack_cursor = true,
@@ -25,7 +28,7 @@ return {
                 dotfiles = true,
             },
             renderer = {
-                group_empty = true,
+                group_empty = false,
                 icons = {
                     git_placement = "after",
                     glyphs = {
