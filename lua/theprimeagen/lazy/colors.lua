@@ -13,6 +13,9 @@ return {
         lazy = false,
         config = function ()
             ColorMyPencils()
+
+            vim.g.nightflyUnderlineMatchParen = true
+            vim.g.nightflyVirtualTextColor = true
         end
     },
     {

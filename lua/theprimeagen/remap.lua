@@ -75,3 +75,7 @@ end)
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- Professional vim keymaps
+vim.keymap.set("n", "<leader>fuckyou", "O/* eslint-disable-next-line */<Esc>j")
+vim.keymap.set("n", "<leader>fuckthis", "ggO/* eslint-disable */<Esc>o<Esc><C-o>")

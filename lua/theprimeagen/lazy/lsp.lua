@@ -12,6 +12,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "yioneko/nvim-vtsls",
     },
 
     config = function()
@@ -33,7 +34,8 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "clangd",
-                "ts_ls",
+                "vtsls",
+                "denols",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -70,6 +72,27 @@ return {
                                 }
                             }
                         }
+                    }
+                end,
+                vtsls = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.vtsls.setup {
+                        root_dir = function(fname)
+                            -- TODO: abstract into function
+                            if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(fname) then
+                                return nil
+                            else
+                               return lspconfig.util.root_pattern("package.json")(fname)
+                                    or vim.fn.getcwd()
+                            end
+                        end,
+                        single_file_support = false, -- deno
+                    }
+                end,
+                denols = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.denols.setup {
+                        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
                     }
                 end,
             }
